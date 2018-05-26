@@ -13,16 +13,22 @@ class NodeFactoryTest extends TestCase
 {
     public function stubColumnNodeProvider()
     {
+        $firstColumn = '
+        {
+          "name": "Column Test"
+        }
+        ';
+        $secondColumn = '
+        {
+          "name": "Another Column Test"
+        }
+        ';
         return [
             [
-                new class {
-                    public $name = 'Column Test';
-                }
+                json_decode($firstColumn),
             ],
             [
-                new class {
-                    public $name = 'Another Column Test';
-                }
+                json_decode($secondColumn),
             ]
         ];
     }
