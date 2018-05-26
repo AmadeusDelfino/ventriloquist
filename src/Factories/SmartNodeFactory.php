@@ -98,11 +98,11 @@ class SmartNodeFactory
      */
     private static function typeOfNode($rawNode)
     {
-        if(isset($rawNode) && isset($rawNode->select)) {
+        if(isset($rawNode->name) && isset($rawNode->select)) {
             return Constants::RELATION_NODE_TYPE;
         }
 
-        if(isset($rawNode) && !isset($rawNode->select)) {
+        if(isset($rawNode->name) && !isset($rawNode->select)) {
             return Constants::COLUMN_NODE_TYPE;
         }
 
