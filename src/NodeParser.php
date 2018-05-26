@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Support\SmartQueryGenerator;
+namespace Adelf\Ventriloquist;
 
 
-use App\Support\SmartQueryGenerator\Handlers\ParseNode;
+use Adelf\Ventriloquist\Handlers\ParseNode;
 
 class NodeParser
 {

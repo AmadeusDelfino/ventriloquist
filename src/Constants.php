@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Support\SmartQueryGenerator;
+namespace Adelf\Ventriloquist;
 
 
 class Constants

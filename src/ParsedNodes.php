@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Support\SmartQueryGenerator;
+namespace Adelf\Ventriloquist;
 
 
-use App\Support\SmartQueryGenerator\Handlers\GetRelationsFromSmartNodes;
-use App\Support\SmartQueryGenerator\Handlers\GetSelectsFromSmartNodes;
+use Adelf\Ventriloquist\Handlers\GetRelationsFromSmartNodes;
+use Adelf\Ventriloquist\Handlers\GetSelectsFromSmartNodes;
 
 class ParsedNodes
 {

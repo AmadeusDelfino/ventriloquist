@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Support\SmartQueryGenerator\QueryParser;
+namespace Adelf\Ventriloquist\QueryParser;
 
-use App\Support\SmartQueryGenerator\NodeParser;
-use App\Support\SmartQueryGenerator\ParsedNodes;
+use Adelf\Ventriloquist\NodeParser;
+use Adelf\Ventriloquist\ParsedNodes;
 use Illuminate\Database\Eloquent\Model;
 
 class Parser

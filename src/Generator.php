@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Support\SmartQueryGenerator;
+namespace Adelf\Ventriloquist;
 
 
-use App\Support\SmartQueryGenerator\QueryParser\Parser;
+use Adelf\Ventriloquist\QueryParser\Parser;
 
 class Generator
 {

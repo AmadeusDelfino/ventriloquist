@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Support\SmartQueryGenerator\Interfaces;
+namespace Adelf\Ventriloquist\Interfaces;
 
 
 interface Node

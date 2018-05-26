@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Support\SmartQueryGenerator\Factories;
+namespace Adelf\Ventriloquist\Factories;
 
 
-use App\Support\SmartQueryGenerator\Constants;
-use App\Support\SmartQueryGenerator\Exceptions\NodeTypeNotValidException;
-use App\Support\SmartQueryGenerator\SmartQueryBase\ColumnNode;
-use App\Support\SmartQueryGenerator\SmartQueryBase\RelationNode;
+use Adelf\Ventriloquist\Constants;
+use Adelf\Ventriloquist\Exceptions\NodeTypeNotValidException;
+use Adelf\Ventriloquist\SmartQueryBase\ColumnNode;
+use Adelf\Ventriloquist\SmartQueryBase\RelationNode;
 
 class SmartNodeFactory
 {

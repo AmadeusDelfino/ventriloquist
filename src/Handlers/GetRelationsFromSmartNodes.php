@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Support\SmartQueryGenerator\Handlers;
+namespace Adelf\Ventriloquist\Handlers;
 
 
-use App\Support\SmartQueryGenerator\Interfaces\Node;
-use App\Support\SmartQueryGenerator\SmartQueryBase\ColumnNode;
-use App\Support\SmartQueryGenerator\SmartQueryBase\RelationNode;
+use Adelf\Ventriloquist\Interfaces\Node;
+use Adelf\Ventriloquist\SmartQueryBase\ColumnNode;
+use Adelf\Ventriloquist\SmartQueryBase\RelationNode;
 
 class GetRelationsFromSmartNodes
 {

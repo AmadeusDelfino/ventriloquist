@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Support\SmartQueryGenerator\Exceptions;
+namespace Adelf\Ventriloquist\Exceptions;
 
 
 class InvalidModelException extends \Exception

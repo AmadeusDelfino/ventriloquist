@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Support\SmartQueryGenerator\Handlers;
+namespace Adelf\Ventriloquist\Handlers;
 
 
-use App\Support\SmartQueryGenerator\Factories\SmartNodeFactory;
+use Adelf\Ventriloquist\Factories\SmartNodeFactory;
 
 class ParseNode
 {
     /**
      * @param $rawNode
-     * @return \App\Support\SmartQueryGenerator\SmartQueryBase\ColumnNode|\App\Support\SmartQueryGenerator\SmartQueryBase\RelationNode
-     * @throws \App\Support\SmartQueryGenerator\Exceptions\NodeTypeNotValidException
+     * @return \Adelf\Ventriloquist\SmartQueryBase\ColumnNode|\Adelf\Ventriloquist\SmartQueryBase\RelationNode
+     * @throws \Adelf\Ventriloquist\Exceptions\NodeTypeNotValidException
      */
     public function __invoke($rawNode)
     {
@@ -19,8 +19,8 @@ class ParseNode
 
     /**
      * @param $rawNode
-     * @return \App\Support\SmartQueryGenerator\SmartQueryBase\ColumnNode|\App\Support\SmartQueryGenerator\SmartQueryBase\RelationNode
-     * @throws \App\Support\SmartQueryGenerator\Exceptions\NodeTypeNotValidException
+     * @return \Adelf\Ventriloquist\SmartQueryBase\ColumnNode|\Adelf\Ventriloquist\SmartQueryBase\RelationNode
+     * @throws \Adelf\Ventriloquist\Exceptions\NodeTypeNotValidException
      */
     private function makeNode($rawNode)
     {

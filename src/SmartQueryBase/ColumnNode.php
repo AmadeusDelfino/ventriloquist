@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Support\SmartQueryGenerator\SmartQueryBase;
+namespace Adelf\Ventriloquist\SmartQueryBase;
 
 
-use App\Support\SmartQueryGenerator\Interfaces\Node;
+use Adelf\Ventriloquist\Interfaces\Node;
 
 class ColumnNode implements Node
 {

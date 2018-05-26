@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Support\SmartQueryGenerator\Handlers;
+namespace Adelf\Ventriloquist\Handlers;
 
 
-use App\Support\SmartQueryGenerator\Interfaces\Node;
-use App\Support\SmartQueryGenerator\SmartQueryBase\ColumnNode;
+use Adelf\Ventriloquist\Interfaces\Node;
+use Adelf\Ventriloquist\SmartQueryBase\ColumnNode;
 
 class GetSelectsFromSmartNodes
 {
     public function __invoke($smartNodes)
     {
-        return $this->filterNullColumns($this->getColumns($smartNodes));
+        return $this->filterNullColumns($this->getColumnsName($smartNodes));
     }
 
-    private function getColumns($smartNodes)
+    private function getColumnsName($smartNodes)
     {
         return array_map(function(Node $node) {
             if($node instanceof ColumnNode) {
