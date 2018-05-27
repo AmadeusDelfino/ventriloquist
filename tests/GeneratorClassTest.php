@@ -137,6 +137,6 @@ class GeneratorClassTest extends TestCase
     {
         $this->expectException(NodeFormatInvalidException::class);
         $parser = new NodeParser();
-        dd($parser->parse($query));
+        $parser->parse($query);
     }
 }
