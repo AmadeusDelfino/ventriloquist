@@ -2,7 +2,6 @@
 
 namespace Adelf\Ventriloquist\Tests;
 
-
 use Adelf\Ventriloquist\Exceptions\NodeTypeNotValidException;
 use Adelf\Ventriloquist\Factories\SmartNodeFactory;
 use Adelf\Ventriloquist\SmartQueryBase\ColumnNode;
@@ -23,13 +22,14 @@ class NodeFactoryTest extends TestCase
           "name": "Another Column Test"
         }
         ';
+
         return [
             [
                 json_decode($firstColumn),
             ],
             [
                 json_decode($secondColumn),
-            ]
+            ],
         ];
     }
 
@@ -65,13 +65,14 @@ class NodeFactoryTest extends TestCase
           ]
         }
         ';
+
         return [
             [
                 json_decode($firsRelationString),
             ],
             [
                 json_decode($secondRelationString),
-            ]
+            ],
         ];
     }
 
@@ -107,18 +108,20 @@ class NodeFactoryTest extends TestCase
           ]
         }
         ';
+
         return [
             [
                 json_decode($firsRelationString),
             ],
             [
                 json_decode($secondRelationString),
-            ]
+            ],
         ];
     }
 
     /**
      * @dataProvider stubColumnNodeProvider
+     *
      * @throws \Adelf\Ventriloquist\Exceptions\NodeTypeNotValidException
      */
     public function test_if_column_factory_works($rawNode)
@@ -130,6 +133,7 @@ class NodeFactoryTest extends TestCase
 
     /**
      * @param $rawNode
+     *
      * @throws \Adelf\Ventriloquist\Exceptions\NodeTypeNotValidException
      * @dataProvider stubRelationNodeProvider
      */
@@ -142,6 +146,7 @@ class NodeFactoryTest extends TestCase
 
     /**
      * @param $rawNode
+     *
      * @throws \Adelf\Ventriloquist\Exceptions\NodeTypeNotValidException
      * @dataProvider stubInvalidNodesProvider
      */

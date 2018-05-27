@@ -2,7 +2,6 @@
 
 namespace Adelf\Ventriloquist\Handlers;
 
-
 use Adelf\Ventriloquist\Interfaces\Node;
 use Adelf\Ventriloquist\SmartQueryBase\ColumnNode;
 
@@ -15,8 +14,8 @@ class GetSelectsFromSmartNodes
 
     private function getColumnsName($smartNodes)
     {
-        return array_map(function(Node $node) {
-            if($node instanceof ColumnNode) {
+        return array_map(function (Node $node) {
+            if ($node instanceof ColumnNode) {
                 return $node->name();
             }
         }, $smartNodes);

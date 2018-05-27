@@ -2,7 +2,6 @@
 
 namespace Adelf\Ventriloquist\SmartQueryBase;
 
-
 use Adelf\Ventriloquist\Interfaces\Node;
 
 class RelationNode implements Node
@@ -13,7 +12,7 @@ class RelationNode implements Node
 
     public function name($name = null)
     {
-        if(is_null($name)) {
+        if (is_null($name)) {
             return $this->name;
         }
 
@@ -24,7 +23,7 @@ class RelationNode implements Node
 
     public function select($select = null)
     {
-        if(is_null($select)) {
+        if (is_null($select)) {
             return $this->select;
         }
 

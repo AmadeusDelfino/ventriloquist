@@ -13,11 +13,12 @@ class Parser
 
     /**
      * @param string $query
+     *
      * @return string|null
      */
     public function query($query = null)
     {
-        if(is_null($query)) {
+        if (is_null($query)) {
             return $this->query;
         }
 
@@ -26,11 +27,12 @@ class Parser
 
     /**
      * @param Model $model
+     *
      * @return Model|null
      */
     public function rootModel($model = null)
     {
-        if(is_null($model)) {
+        if (is_null($model)) {
             return $this->rootModel;
         }
 
@@ -45,5 +47,4 @@ class Parser
 
         return $parsedNodes;
     }
-
 }

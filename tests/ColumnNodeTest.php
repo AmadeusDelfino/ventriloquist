@@ -2,7 +2,6 @@
 
 namespace Adelf\Ventriloquist\Tests;
 
-
 use Adelf\Ventriloquist\SmartQueryBase\ColumnNode;
 use PHPUnit\Framework\TestCase;
 

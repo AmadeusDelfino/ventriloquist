@@ -2,7 +2,6 @@
 
 namespace Adelf\Ventriloquist\SmartQueryBase;
 
-
 use Adelf\Ventriloquist\Interfaces\Node;
 
 class ColumnNode implements Node
@@ -11,7 +10,7 @@ class ColumnNode implements Node
 
     public function name($name = null)
     {
-        if(is_null($name)) {
+        if (is_null($name)) {
             return $this->name;
         }
 

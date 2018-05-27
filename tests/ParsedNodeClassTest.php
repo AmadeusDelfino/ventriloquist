@@ -2,13 +2,8 @@
 
 namespace Adelf\Ventriloquist\Tests;
 
-
-use Adelf\Ventriloquist\Exceptions\NodeFormatInvalidException;
 use Adelf\Ventriloquist\Generator;
-use Adelf\Ventriloquist\NodeParser;
 use Adelf\Ventriloquist\Tests\Stubs\FakeModel;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
 use PHPUnit\Framework\TestCase;
 
 class ParsedNodeClassTest extends TestCase
@@ -51,6 +46,7 @@ class ParsedNodeClassTest extends TestCase
           }
         ]
         ';
+
         return [
             [json_decode($firstQuery)],
         ];
@@ -94,6 +90,7 @@ class ParsedNodeClassTest extends TestCase
           }
         ]
         ';
+
         return [
             [json_decode($firstQuery)],
         ];

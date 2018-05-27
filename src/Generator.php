@@ -2,7 +2,6 @@
 
 namespace Adelf\Ventriloquist;
 
-
 use Adelf\Ventriloquist\QueryParser\Parser;
 
 class Generator
@@ -16,7 +15,7 @@ class Generator
 
     public function rootModel($model = null)
     {
-        if(($return = $this->parser->rootModel($model)) !== null) {
+        if (($return = $this->parser->rootModel($model)) !== null) {
             return $return;
         }
 
@@ -25,7 +24,7 @@ class Generator
 
     public function query($query = null)
     {
-        if(($return = $this->parser->query($query)) !== null) {
+        if (($return = $this->parser->query($query)) !== null) {
             return $return;
         }
 
