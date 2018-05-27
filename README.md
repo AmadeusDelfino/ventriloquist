@@ -1,4 +1,5 @@
 # Ventriloquist
+[![Build Status](https://travis-ci.org/AmadeusDelfino/ventriloquist.svg?branch=master)](https://travis-ci.org/AmadeusDelfino/ventriloquist)
 
 Suporte para fornecer uma interface única para consultas no banco de dados que utilizam ORMs com suporte a dotnotation
 (como o Eloquent)
