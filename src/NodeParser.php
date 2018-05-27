@@ -3,6 +3,7 @@
 namespace Adelf\Ventriloquist;
 
 
+use Adelf\Ventriloquist\Exceptions\NodeFormatInvalidException;
 use Adelf\Ventriloquist\Handlers\ParseNode;
 
 class NodeParser
@@ -21,12 +22,17 @@ class NodeParser
         return false;
     }
 
+    /**
+     * @param $rawNode
+     * @return mixed
+     * @throws NodeFormatInvalidException
+     */
     private function parseNode($rawNode)
     {
         if($this->isValidNode($rawNode)) {
             return (new ParseNode())($rawNode);
         }
 
-        return null;
+        throw new NodeFormatInvalidException();
     }
 }
