@@ -80,7 +80,7 @@ Um array PHP que vai gerar um JSON dessa forma é o seguinte:
 
 #### Implementação
 ```php
-$parser = new \App\Support\SmartQueryGenerator\QueryParser\Parser();
+$parser = new Generator();
 $parser->query($arrayQuery);
 $parser->rootModel(new \My\Root\Model());
 $parsed = $parser->parse();
