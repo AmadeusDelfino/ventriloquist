@@ -2,7 +2,6 @@
 
 namespace Adelf\Ventriloquist\Tests;
 
-
 use Adelf\Ventriloquist\Exceptions\NodeFormatInvalidException;
 use Adelf\Ventriloquist\Generator;
 use Adelf\Ventriloquist\NodeParser;
@@ -51,6 +50,7 @@ class GeneratorClassTest extends TestCase
           }
         ]
         ';
+
         return [
             [json_decode($firstQuery)],
         ];
@@ -94,6 +94,7 @@ class GeneratorClassTest extends TestCase
           }
         ]
         ';
+
         return [
             [json_decode($firstQuery)],
         ];
@@ -113,7 +114,7 @@ class GeneratorClassTest extends TestCase
         $this->assertInternalType('array', $parsedNodes->getRelations());
         $this->assertInternalType('array', $parsedNodes->getSelects());
 
-        #TODO test with eloquent
+        //TODO test with eloquent
 //        $this->assertInstanceOf(Builder::class, $parsedNodes->eloquentBuilder());
     }
 

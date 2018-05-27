@@ -2,7 +2,6 @@
 
 namespace Adelf\Ventriloquist;
 
-
 use Adelf\Ventriloquist\Handlers\GetRelationsFromSmartNodes;
 use Adelf\Ventriloquist\Handlers\GetSelectsFromSmartNodes;
 
@@ -13,7 +12,7 @@ class ParsedNodes
 
     public function nodes($nodes = null)
     {
-        if(is_null($nodes)) {
+        if (is_null($nodes)) {
             return $this->nodes;
         }
 
@@ -22,7 +21,7 @@ class ParsedNodes
 
     public function model($model = null)
     {
-        if(is_null($model)) {
+        if (is_null($model)) {
             return $this->model;
         }
 

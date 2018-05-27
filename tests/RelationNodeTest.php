@@ -2,8 +2,6 @@
 
 namespace Adelf\Ventriloquist\Tests;
 
-
-use Adelf\Ventriloquist\SmartQueryBase\ColumnNode;
 use Adelf\Ventriloquist\SmartQueryBase\RelationNode;
 use PHPUnit\Framework\TestCase;
 
@@ -13,10 +11,10 @@ class RelationNodeTest extends TestCase
     {
         $nodeName = 'Nice name';
         $nodeSelect = [
-            "column_1",
-            "column_2",
-            "column_3",
-            "column_4",
+            'column_1',
+            'column_2',
+            'column_3',
+            'column_4',
         ];
 
         $relationNode = new RelationNode();
@@ -26,7 +24,6 @@ class RelationNodeTest extends TestCase
         $relationNode->name($nodeName);
         $relationNode->select($nodeSelect);
         $relationNode->addNestedNode($nestedRelationNode);
-
 
         $this->assertEquals($nodeName, $relationNode->name());
         $this->assertEquals($nodeSelect, $relationNode->select());
