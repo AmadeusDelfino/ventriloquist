@@ -5,7 +5,7 @@ namespace Adelf\Ventriloquist\Types;
 
 use Adelf\Ventriloquist\Constants;
 use Adelf\Ventriloquist\Interfaces\ListOfType as IListOfType;
-use Adelf\Ventriloquist\TypeValidator\Validators\Integer as IntegerValidator;
+use Adelf\Ventriloquist\TypeValidator\Validators\IntegerValidator as IntegerValidator;
 
 class ListOfType extends Base implements IListOfType
 {

@@ -4,7 +4,7 @@ namespace Adelf\Ventriloquist\Types;
 
 
 use Adelf\Ventriloquist\Constants;
-use Adelf\Ventriloquist\TypeValidator\Validators\Integer as IntegerValidator;
+use Adelf\Ventriloquist\TypeValidator\Validators\IntegerValidator as IntegerValidator;
 
 class IntegerType extends Base
 {
