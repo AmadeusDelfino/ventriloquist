@@ -23,7 +23,7 @@ abstract class Base implements Type
      * @return StringType
      * @throws TypeDescribeInvalidException
      */
-    public function typeDescribe(): StringType
+    public function typeDescribe(): string
     {
         if(is_null($this->typeDescribe)) {
             throw new TypeDescribeInvalidException();

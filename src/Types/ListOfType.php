@@ -5,7 +5,7 @@ namespace Adelf\Ventriloquist\Types;
 
 use Adelf\Ventriloquist\Constants;
 use Adelf\Ventriloquist\Interfaces\ListOfType as IListOfType;
-use Adelf\Ventriloquist\TypeValidator\Validators\IntegerValidator as IntegerValidator;
+use Adelf\Ventriloquist\TypeValidator\Validators\ListValidator;
 
 class ListOfType extends Base implements IListOfType
 {
@@ -13,7 +13,7 @@ class ListOfType extends Base implements IListOfType
     protected $list;
 
     protected $validators = [
-        IntegerValidator::class,
+        ListValidator::class,
     ];
 
     function resolver($value)
