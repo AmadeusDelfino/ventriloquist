@@ -6,8 +6,8 @@ use Adelf\Ventriloquist\Exceptions\NodeFormatInvalidException;
 use Adelf\Ventriloquist\Generator;
 use Adelf\Ventriloquist\NodeParser;
 use Adelf\Ventriloquist\Tests\Stubs\FakeModel;
+use Adelf\Ventriloquist\Tests\Stubs\FakeType;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
 use PHPUnit\Framework\TestCase;
 
 class GeneratorClassTest extends TestCase
@@ -19,27 +19,16 @@ class GeneratorClassTest extends TestCase
           {
             "name": "relation_test_one",
             "select": [
-              "relation_field",
-              "second_relation_field",
+              "just_column_sub",
               {
-                "name": "sub_relation_test",
+                "name": "relation_test_sub",
                 "select": [
-                  "a_nice_field"
-                ] 
+                  "sub_sub_1",
+                  "sub_sub_2",
+                  "sub_sub_3"                  
+                ]
               }
-            ]
-          },
-          {
-            "name": "relation_test_two",
-            "select": [
-              "relation_field",
-              "second_relation_field",
-              {
-                "name": "sub_relation_test",
-                "select": [
-                  "a_nice_field"
-                ] 
-              }
+              
             ]
           },
           {
@@ -108,7 +97,7 @@ class GeneratorClassTest extends TestCase
     {
         $parser = new Generator();
         $parser->query($query);
-        $parser->rootModel(new FakeModel());
+        $parser->type(FakeType::class);
         $parsedNodes = $parser->parse();
 
         $this->assertInternalType('array', $parsedNodes->getRelations());

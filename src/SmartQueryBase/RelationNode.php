@@ -4,22 +4,10 @@ namespace Adelf\Ventriloquist\SmartQueryBase;
 
 use Adelf\Ventriloquist\Interfaces\Node;
 
-class RelationNode implements Node
+class RelationNode extends Base
 {
-    protected $name;
-    protected $select;
+    protected $select = [];
     protected $nestedNodes = [];
-
-    public function name($name = null)
-    {
-        if (is_null($name)) {
-            return $this->name;
-        }
-
-        $this->name = $name;
-
-        return $this;
-    }
 
     public function select($select = null)
     {
@@ -35,6 +23,11 @@ class RelationNode implements Node
     public function addNestedNode(Node $node)
     {
         $this->nestedNodes[$node->name()] = $node;
+    }
+
+    public function addSelect(ColumnNode $columnNode)
+    {
+        $this->select[$columnNode->name] = $columnNode;
     }
 
     public function nested()

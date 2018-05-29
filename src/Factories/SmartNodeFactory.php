@@ -4,95 +4,44 @@ namespace Adelf\Ventriloquist\Factories;
 
 use Adelf\Ventriloquist\Constants;
 use Adelf\Ventriloquist\Exceptions\NodeTypeNotValidException;
+use Adelf\Ventriloquist\Interfaces\Type;
 use Adelf\Ventriloquist\SmartQueryBase\ColumnNode;
 use Adelf\Ventriloquist\SmartQueryBase\RelationNode;
 
 class SmartNodeFactory
 {
+    /** @var Type */
+    protected $rootType;
+
     /**
-     * @param $data
+     * @param $rawNode
      *
-     * @throws NodeTypeNotValidException
-     *
+     * @param $rootType
      * @return ColumnNode|RelationNode
+     * @throws NodeTypeNotValidException
      */
-    public static function make($data)
+    public function make($rawNode, Type $rootType)
     {
-        return self::makeByType(self::typeOfNode($data), $data);
+        $this->rootType = $rootType;
+        return $this->makeByType($this->typeOfNode($rawNode), $rawNode);
     }
 
     /**
-     * @param $type
-     * @param $data
+     * @param $nodeType
+     * @param $rawNode
      *
-     * @throws NodeTypeNotValidException
      *
      * @return ColumnNode|RelationNode
      */
-    private static function makeByType($type, $data)
+    private function makeByType($nodeType, $rawNode)
     {
-        switch ($type) {
+        switch ($nodeType) {
             case Constants::COLUMN_NODE_TYPE:
-                return self::makeColumnType($data);
+                return (new SmartNodeColumnFactory())($rawNode, $this->rootType);
 
             case Constants::RELATION_NODE_TYPE:
-                return self::makeRelationType($data);
+                return (new SmartNodeRelationFactory())($rawNode, $this->rootType);
         }
-    }
-
-    private static function makeColumnType($data)
-    {
-        $type = new ColumnNode();
-        $type->name($data->name);
-
-        return $type;
-    }
-
-    /**
-     * @param $data
-     *
-     * @throws NodeTypeNotValidException
-     *
-     * @return RelationNode
-     */
-    private static function makeRelationType($data)
-    {
-        $type = new RelationNode();
-        $type->name($data->name);
-        if (self::hasNestedResource($data->select)) {
-            self::setNestedResource($data, $type);
-        }
-        $type->select($data->select);
-
-        return $type;
-    }
-
-    private static function hasNestedResource($data)
-    {
-        foreach ($data as $select) {
-            if (self::isNested($select)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private static function isNested($data)
-    {
-        return is_object($data);
-    }
-
-    private static function getAndRemoveNestedResources(&$selects)
-    {
-        $nested = [];
-        foreach ($selects as $key=>$select) {
-            if (self::isNested($select)) {
-                $nested[] = array_pull($selects, $key);
-            }
-        }
-
-        return $nested;
     }
 
     /**
@@ -102,7 +51,7 @@ class SmartNodeFactory
      *
      * @return string
      */
-    private static function typeOfNode($rawNode)
+    private function typeOfNode($rawNode)
     {
         if (isset($rawNode->name) && isset($rawNode->select)) {
             return Constants::RELATION_NODE_TYPE;
@@ -113,18 +62,5 @@ class SmartNodeFactory
         }
 
         throw new NodeTypeNotValidException();
-    }
-
-    /**
-     * @param $data
-     * @param $type
-     *
-     * @throws NodeTypeNotValidException
-     */
-    private static function setNestedResource($data, RelationNode $type)
-    {
-        foreach (self::getAndRemoveNestedResources($data->select) as $nested) {
-            $type->addNestedNode(self::make($nested));
-        }
     }
 }

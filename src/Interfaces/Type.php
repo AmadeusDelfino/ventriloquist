@@ -3,11 +3,15 @@
 namespace Adelf\Ventriloquist\Interfaces;
 
 
+use Illuminate\Database\Eloquent\Model;
+
 interface Type
 {
-    public function validators(): array;
+    public function attributes() : array;
 
-    public function typeDescribe(): string;
+    public function model(Model $model = null);
 
-    public function resolver($value);
+    public function getAttribute($attribute);
+
+    public function isNestedType($attribute) : bool;
 }

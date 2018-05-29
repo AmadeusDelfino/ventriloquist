@@ -1,6 +1,6 @@
 <?php
 
-namespace Adelf\Ventriloquist\TypeValidator\Validators;
+namespace Adelf\Ventriloquist\DataStructureValidator\Validators;
 
 class BooleanValidator extends Base
 {

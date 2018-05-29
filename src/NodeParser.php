@@ -4,36 +4,38 @@ namespace Adelf\Ventriloquist;
 
 use Adelf\Ventriloquist\Exceptions\NodeFormatInvalidException;
 use Adelf\Ventriloquist\Handlers\ParseNode;
+use Adelf\Ventriloquist\Interfaces\Type;
+use Adelf\Ventriloquist\NodeParserValidator\Validator;
 
 class NodeParser
 {
-    public function parse($smartQuery)
+    protected $rootType;
+    protected $validator;
+
+    public function __construct()
     {
-        return array_map([$this, 'parseNode'], $smartQuery);
+        $this->validator = new Validator();
     }
 
-    private function isValidNode($rawNode)
+    public function tokenizer($smartQuery, $rootType)
     {
-        if (isset($rawNode->name)) {
-            return true;
-        }
-
-        return false;
+        $this->rootType = $rootType;
+        return array_map([$this, 'parseNode'], $smartQuery);
     }
 
     /**
      * @param $rawNode
      *
-     * @throws NodeFormatInvalidException
-     *
      * @return mixed
      */
     private function parseNode($rawNode)
     {
-        if ($this->isValidNode($rawNode)) {
-            return (new ParseNode())($rawNode);
+        if ($this->validator->isValidRawNode($rawNode)) {
+            return (new ParseNode())($rawNode, $this->rootType);
         }
 
-        throw new NodeFormatInvalidException();
+        $this->validator->registerInvalidNode($rawNode);
+
+        return null;
     }
 }

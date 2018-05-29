@@ -1,15 +1,15 @@
 <?php
 
-namespace Adelf\Ventriloquist\Types;
+namespace Adelf\Ventriloquist\DataStructure;
 
 
 use Adelf\Ventriloquist\Constants;
+use Adelf\Ventriloquist\DataStructureValidator\Validators\ListValidator;
 use Adelf\Ventriloquist\Interfaces\ListOfType as IListOfType;
-use Adelf\Ventriloquist\TypeValidator\Validators\ListValidator;
 
-class ListOfType extends Base implements IListOfType
+class ListOfStructure extends Base implements IListOfType
 {
-    protected $typeDescribe = Constants::LIST_OF_TYPE_DESCRIBE;
+    protected $dataDescribe = Constants::LIST_OF_TYPE_DESCRIBE;
     protected $list;
 
     protected $validators = [

@@ -1,17 +1,13 @@
 <?php
 
-namespace Adelf\Ventriloquist\TypeValidator;
+namespace Adelf\Ventriloquist\DataStructureValidator;
+
 
 use Adelf\Ventriloquist\Interfaces\TypeValidator;
 
 class Validator implements TypeValidator
 {
     protected $attributes;
-
-    public function rules(array $rules = null)
-    {
-        // TODO: Implement rules() method.
-    }
 
     public function attributes(array $attributes = null)
     {
@@ -26,6 +22,6 @@ class Validator implements TypeValidator
 
     public function validate()
     {
-        // TODO: Implement validate() method.
+
     }
 }

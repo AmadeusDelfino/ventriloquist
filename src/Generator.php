@@ -2,6 +2,7 @@
 
 namespace Adelf\Ventriloquist;
 
+use Adelf\Ventriloquist\Interfaces\Type;
 use Adelf\Ventriloquist\QueryParser\Parser;
 
 class Generator
@@ -13,9 +14,11 @@ class Generator
         $this->parser = new Parser();
     }
 
-    public function rootModel($model = null)
+    public function type($type = null)
     {
-        if (($return = $this->parser->rootModel($model)) !== null) {
+        $type = is_string($type) ? new $type : (($type instanceof Type) ? $type : null);
+
+        if (($return = $this->parser->type($type)) !== null) {
             return $return;
         }
 

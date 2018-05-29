@@ -9,24 +9,24 @@ class ParseNode
     /**
      * @param $rawNode
      *
-     * @throws \Adelf\Ventriloquist\Exceptions\NodeTypeNotValidException
-     *
+     * @param $rootType
      * @return \Adelf\Ventriloquist\SmartQueryBase\ColumnNode|\Adelf\Ventriloquist\SmartQueryBase\RelationNode
+     * @throws \Adelf\Ventriloquist\Exceptions\NodeTypeNotValidException
      */
-    public function __invoke($rawNode)
+    public function __invoke($rawNode, $rootType)
     {
-        return $this->makeNode($rawNode);
+        return $this->makeNode($rawNode, $rootType);
     }
 
     /**
      * @param $rawNode
      *
-     * @throws \Adelf\Ventriloquist\Exceptions\NodeTypeNotValidException
-     *
+     * @param $rootType
      * @return \Adelf\Ventriloquist\SmartQueryBase\ColumnNode|\Adelf\Ventriloquist\SmartQueryBase\RelationNode
+     * @throws \Adelf\Ventriloquist\Exceptions\NodeTypeNotValidException
      */
-    private function makeNode($rawNode)
+    private function makeNode($rawNode, $rootType)
     {
-        return SmartNodeFactory::make($rawNode);
+        return (new SmartNodeFactory())->make($rawNode, $rootType);
     }
 }
