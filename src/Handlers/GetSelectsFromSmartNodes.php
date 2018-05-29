@@ -3,6 +3,7 @@
 namespace Adelf\Ventriloquist\Handlers;
 
 use Adelf\Ventriloquist\Interfaces\Node;
+use Adelf\Ventriloquist\QueryParser\Field;
 use Adelf\Ventriloquist\SmartQueryBase\ColumnNode;
 
 class GetSelectsFromSmartNodes
@@ -16,7 +17,10 @@ class GetSelectsFromSmartNodes
     {
         return array_map(function (Node $node) {
             if ($node instanceof ColumnNode) {
-                return $node->name();
+                $field = new  Field();
+                $field->setToken($node->name());
+
+                return $field;
             }
         }, $smartNodes);
     }

@@ -67,7 +67,7 @@ class Field
         return $this;
     }
 
-    public function selectInDatabase() : bool
+    public function needSelectInDatabase() : bool
     {
         return is_null($this->handle);
     }

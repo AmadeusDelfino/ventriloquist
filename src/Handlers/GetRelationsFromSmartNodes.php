@@ -77,7 +77,6 @@ class GetRelationsFromSmartNodes
         $field = new Field();
         $field
             ->setToken($this->buildPrefix().':'.implode(',', $this->getSelectsName($selects)))
-            ->setHandle(function () {})
             ->setSelects($selects);
 
         return $field;

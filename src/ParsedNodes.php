@@ -4,6 +4,7 @@ namespace Adelf\Ventriloquist;
 
 use Adelf\Ventriloquist\Handlers\GetRelationsFromSmartNodes;
 use Adelf\Ventriloquist\Handlers\GetSelectsFromSmartNodes;
+use Adelf\Ventriloquist\QueryParser\Field;
 
 class ParsedNodes
 {
@@ -38,8 +39,28 @@ class ParsedNodes
         return (new GetRelationsFromSmartNodes())($this->nodes);
     }
 
-    public function eloquentBuilder()
+    public function getRelationsForModel()
     {
-        return $this->model->select($this->getSelects())->with($this->getRelations());
+        $relationsWithoutHandler = array_filter($this->getRelations(), function (Field $field) {
+            return $field->needSelectInDatabase();
+        });
+
+        return array_map(function (Field $field) {
+            return $field->getToken();
+        }, $relationsWithoutHandler);
+    }
+
+    public function executeQuery()
+    {
+        $dataFromDatabase = $this->executeQueryInDatabase();
+    }
+
+    private function executeQueryInDatabase()
+    {
+        return $this
+            ->model
+            ->with($this->getRelationsForModel())
+            ->select($this->getSelects())
+            ->get();
     }
 }

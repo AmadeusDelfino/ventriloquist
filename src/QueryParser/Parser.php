@@ -47,11 +47,6 @@ class Parser
             ->initParsedNodeClass((new NodeParser())->tokenizer($this->query, $this->type));
     }
 
-    private function executeTypeValidation()
-    {
-
-    }
-
     /**
      * @param $nodes
      * @return ParsedNodes
@@ -61,7 +56,7 @@ class Parser
         $parsedNodes = new ParsedNodes();
         $parsedNodes->nodes($nodes);
         $parsedNodes->model($this->type->model());
-
+        dd($parsedNodes->getRelationsForModel());
         return $parsedNodes;
     }
 
