@@ -3,6 +3,7 @@
 namespace Adelf\Ventriloquist\Handlers;
 
 use Adelf\Ventriloquist\Interfaces\Node;
+use Adelf\Ventriloquist\QueryParser\Field;
 use Adelf\Ventriloquist\SmartQueryBase\RelationNode;
 
 class GetRelationsFromSmartNodes
@@ -34,12 +35,13 @@ class GetRelationsFromSmartNodes
 
     private function getRelationsWithNested(RelationNode $node)
     {
+        $selects = [];
         if ($this->rootPrefix === null) {
             $this->rootPrefix = $node->name();
         }
         $this->currentPrefix = $node->name();
 
-        $selects = $this->getSelectWithPrefix($node->select());
+        array_push($selects, $this->getSelectWithPrefix($node->select()));
 
         foreach ($node->nested() as $nested) {
             $selects = $this->addNestedSelects($nested, $selects);
@@ -54,7 +56,7 @@ class GetRelationsFromSmartNodes
         $this->previouslyPrefix = $this->rootPrefix;
         $this->currentPrefix = null;
 
-        return (count($selects) == 0) ? null : array_flatten($selects);
+        return $selects;
     }
 
     private function buildPrefix()
@@ -72,7 +74,13 @@ class GetRelationsFromSmartNodes
 
     private function getSelectWithPrefix($selects)
     {
-        return [$this->buildPrefix().':'.implode(',', $this->getSelectsName($selects))];
+        $field = new Field();
+        $field
+            ->setToken($this->buildPrefix().':'.implode(',', $this->getSelectsName($selects)))
+            ->setHandle(function () {})
+            ->setSelects($selects);
+
+        return $field;
     }
 
     private function getSelectsName($selects)
