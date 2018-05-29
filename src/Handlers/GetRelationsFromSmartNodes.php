@@ -72,7 +72,14 @@ class GetRelationsFromSmartNodes
 
     private function getSelectWithPrefix($selects)
     {
-        return [$this->buildPrefix().':'.implode(',', $selects)];
+        return [$this->buildPrefix().':'.implode(',', $this->getSelectsName($selects))];
+    }
+
+    private function getSelectsName($selects)
+    {
+        return array_map(function($select) {
+            return $select->name();
+        }, $selects);
     }
 
     /**

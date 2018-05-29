@@ -100,6 +100,7 @@ class GeneratorClassTest extends TestCase
         $parser->type(FakeType::class);
         $parsedNodes = $parser->parse();
 
+        dd($parsedNodes->getRelations());
         $this->assertInternalType('array', $parsedNodes->getRelations());
         $this->assertInternalType('array', $parsedNodes->getSelects());
 
