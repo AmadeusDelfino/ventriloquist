@@ -33,7 +33,7 @@ class SmartNodeRelationFactory
 
             return $node;
         }
-        dd('fail');
+
         return null;
     }
 

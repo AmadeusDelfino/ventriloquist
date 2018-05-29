@@ -44,7 +44,7 @@ class Parser
     public function parse()
     {
         $nodes = (new NodeParser())->tokenizer($this->query, $this->type);
-        dd($nodes);
+
         return $this->initParsedNodeClass($nodes);
     }
 
