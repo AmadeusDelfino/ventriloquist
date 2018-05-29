@@ -10,9 +10,9 @@ class Constants
     /**
      * Types constants
      */
-    const GENERIC_TYPE_DESCRIBE = 'generic';
-    const INTEGER_TYPE_DESCRIBE = 'integer';
-    const LIST_OF_TYPE_DESCRIBE = 'list_of';
-    const STRING_TYPE_DESCRIBE = 'string';
-    const CUSTOM_TYPE_DESCRIBE = 'custom';
+    const GENERIC_STRUCTURE_DESCRIBE = 'generic';
+    const INTEGER_STRUCTURE_DESCRIBE = 'integer';
+    const LIST_OF_STRUCTURE_DESCRIBE = 'list_of';
+    const STRING_STRUCTURE_DESCRIBE = 'string';
+    const CUSTOM_STRUCTURE_DESCRIBE = 'custom';
 }

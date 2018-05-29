@@ -8,7 +8,7 @@ use Adelf\Ventriloquist\DataStructureValidator\Validators\IntegerValidator;
 
 class IntegerStructure extends Base
 {
-    protected $dataDescribe = Constants::INTEGER_TYPE_DESCRIBE;
+    protected $dataDescribe = Constants::INTEGER_STRUCTURE_DESCRIBE;
 
     protected $validators = [
         IntegerValidator::class,

@@ -9,7 +9,7 @@ use Adelf\Ventriloquist\Interfaces\ListOfType as IListOfType;
 
 class ListOfStructure extends Base implements IListOfType
 {
-    protected $dataDescribe = Constants::LIST_OF_TYPE_DESCRIBE;
+    protected $dataDescribe = Constants::LIST_OF_STRUCTURE_DESCRIBE;
     protected $list;
 
     protected $validators = [

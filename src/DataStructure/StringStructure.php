@@ -8,7 +8,7 @@ use Adelf\Ventriloquist\DataStructureValidator\Validators\StringValidator;
 
 class StringStructure extends Base
 {
-    protected $dataDescribe = Constants::STRING_TYPE_DESCRIBE;
+    protected $dataDescribe = Constants::STRING_STRUCTURE_DESCRIBE;
 
     protected $validators = [
         StringValidator::class,

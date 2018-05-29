@@ -6,7 +6,7 @@ use Adelf\Ventriloquist\Constants;
 
 class GenericStructure extends Base
 {
-    protected $dataDescribe = Constants::GENERIC_TYPE_DESCRIBE;
+    protected $dataDescribe = Constants::GENERIC_STRUCTURE_DESCRIBE;
 
     function resolver($value)
     {
