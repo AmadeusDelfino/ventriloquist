@@ -2,6 +2,8 @@
 
 namespace Adelf\Ventriloquist\Factories;
 
+use Adelf\Ventriloquist\Exceptions\AttributeNotFoundException;
+use Adelf\Ventriloquist\Exceptions\NodeTypeNotValidException;
 use Adelf\Ventriloquist\Interfaces\Type;
 use Adelf\Ventriloquist\SmartQueryBase\RelationNode;
 use Adelf\Ventriloquist\Traits\ClassInstance;
@@ -14,10 +16,12 @@ class SmartNodeRelationFactory
      * @param $rawNode
      * @param Type $type
      * @return RelationNode|null
-     * @throws \Adelf\Ventriloquist\Exceptions\NodeTypeNotValidException
+     * @throws NodeTypeNotValidException
+     * @throws AttributeNotFoundException
      */
     public function __invoke($rawNode, Type $type)
     {
+        $this->validateAttribute($type, $rawNode);
         $attribute = $type->getAttribute($rawNode->name);
 
         $type = $this->getRelatedType($attribute);
@@ -37,12 +41,18 @@ class SmartNodeRelationFactory
         return null;
     }
 
+    /**
+     * @param $selects
+     * @param $attribute
+     * @return bool
+     * @throws AttributeNotFoundException
+     */
     private function selectsIsValid($selects, $attribute)
     {
         $relatedType = $this->getRelatedType($attribute);
         foreach($selects as $select) {
             if((! $this->isNested($select)) && is_null($relatedType->getAttribute($select))) {
-                return false;
+                throw new AttributeNotFoundException();
             }
         }
 
@@ -59,7 +69,7 @@ class SmartNodeRelationFactory
      * @param RelationNode $node
      * @param $data
      * @param Type $type
-     * @throws \Adelf\Ventriloquist\Exceptions\NodeTypeNotValidException
+     * @throws NodeTypeNotValidException
      */
     private function setNestedResource(RelationNode $node, $data, Type $type)
     {
@@ -90,7 +100,7 @@ class SmartNodeRelationFactory
      * @param $selects
      * @param Type $type
      * @return RelationNode
-     * @throws \Adelf\Ventriloquist\Exceptions\NodeTypeNotValidException
+     * @throws NodeTypeNotValidException
      */
     private function setSelect(RelationNode $node, $selects, Type $type)
     {
@@ -108,5 +118,17 @@ class SmartNodeRelationFactory
         }
 
         return $node;
+    }
+
+    /**
+     * @param Type $type
+     * @param $rawNode
+     * @throws AttributeNotFoundException
+     */
+    private function validateAttribute(Type $type, $rawNode)
+    {
+        if(is_null($type->getAttribute($rawNode->name))) {
+            throw new AttributeNotFoundException();
+        }
     }
 }

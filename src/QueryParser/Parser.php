@@ -4,8 +4,8 @@ namespace Adelf\Ventriloquist\QueryParser;
 
 use Adelf\Ventriloquist\Interfaces\Type;
 use Adelf\Ventriloquist\NodeParser;
+use Adelf\Ventriloquist\NodeParserValidator\Validator;
 use Adelf\Ventriloquist\ParsedNodes;
-use Adelf\Ventriloquist\TypeValidator\Validator;
 
 class Parser
 {
@@ -44,7 +44,7 @@ class Parser
     public function parse()
     {
         $nodes = (new NodeParser())->tokenizer($this->query, $this->type);
-
+        dd($nodes);
         return $this->initParsedNodeClass($nodes);
     }
 

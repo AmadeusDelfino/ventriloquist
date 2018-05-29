@@ -25,7 +25,7 @@ class GeneratorClassTest extends TestCase
                 "select": [
                   "sub_sub_1",
                   "sub_sub_2",
-                  "sub_sub_3"                  
+                  "sub_sub_3"               
                 ]
               }
               
