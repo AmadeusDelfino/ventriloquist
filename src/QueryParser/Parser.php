@@ -43,9 +43,8 @@ class Parser
 
     public function parse()
     {
-        $nodes = (new NodeParser())->tokenizer($this->query, $this->type);
-
-        return $this->initParsedNodeClass($nodes);
+        return $this
+            ->initParsedNodeClass((new NodeParser())->tokenizer($this->query, $this->type));
     }
 
     private function executeTypeValidation()
