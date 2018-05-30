@@ -5,7 +5,6 @@ namespace Adelf\Ventriloquist\Tests;
 use Adelf\Ventriloquist\Exceptions\NodeFormatInvalidException;
 use Adelf\Ventriloquist\Generator;
 use Adelf\Ventriloquist\NodeParser;
-use Adelf\Ventriloquist\Tests\Stubs\FakeModel;
 use Adelf\Ventriloquist\Tests\Stubs\FakeType;
 use Illuminate\Database\Eloquent\Model;
 use PHPUnit\Framework\TestCase;
@@ -36,6 +35,9 @@ class GeneratorClassTest extends TestCase
           },
           {
             "name": "just_column_two"
+          },
+          {
+            "name": "with_handler"
           }
         ]
         ';
@@ -100,7 +102,8 @@ class GeneratorClassTest extends TestCase
         $parser->type(FakeType::class);
         $parsedNodes = $parser->parse();
 
-        dd($parsedNodes->getRelations());
+        $fields = $parsedNodes->getRelationsForModel();
+        dd($fields);
         $this->assertInternalType('array', $parsedNodes->getRelations());
         $this->assertInternalType('array', $parsedNodes->getSelects());
 
@@ -115,7 +118,7 @@ class GeneratorClassTest extends TestCase
     {
         $parser = new Generator();
         $parser->query($query);
-        $parser->rootModel(new FakeModel());
+        $parser->type(FakeType::class);
 
         $this->assertInstanceOf(Model::class, $parser->rootModel());
         $this->assertInternalType('array', $parser->query());
@@ -128,6 +131,6 @@ class GeneratorClassTest extends TestCase
     {
         $this->expectException(NodeFormatInvalidException::class);
         $parser = new NodeParser();
-        $parser->parse($query);
+        $parser->tokenizer($query, new FakeType());
     }
 }

@@ -41,26 +41,13 @@ class ParsedNodes
 
     public function getRelationsForModel()
     {
-        $relationsWithoutHandler = array_filter($this->getRelations(), function (Field $field) {
-            return $field->needSelectInDatabase();
-        });
-
-        return array_map(function (Field $field) {
-            return $field->getToken();
-        }, $relationsWithoutHandler);
+        return array_filter(array_map(function (Field $field) {
+            return $field->tokenWithSelect();
+        }, $this->getRelations()));
     }
 
-    public function executeQuery()
+    public function getRelationsWithHandler()
     {
-        $dataFromDatabase = $this->executeQueryInDatabase();
-    }
 
-    private function executeQueryInDatabase()
-    {
-        return $this
-            ->model
-            ->with($this->getRelationsForModel())
-            ->select($this->getSelects())
-            ->get();
     }
 }

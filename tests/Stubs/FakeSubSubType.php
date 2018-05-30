@@ -16,6 +16,9 @@ class FakeSubSubType extends Type
         return [
             'sub_sub_1' => [
                 'structure' => StringStructure::class,
+                'handler' => function($rootType, $rootModel, $selects) {
+
+                }
             ],
             'sub_sub_2' => [
                 'structure' => StringStructure::class,

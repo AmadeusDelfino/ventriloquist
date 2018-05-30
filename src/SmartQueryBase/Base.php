@@ -9,6 +9,7 @@ class Base implements Node
 {
     protected $name;
     protected $structure;
+    protected $handler;
 
     public function name($name = null)
     {
@@ -30,5 +31,26 @@ class Base implements Node
         $this->structure = $structure;
 
         return $this;
+    }
+
+    /**
+     * @return callable|null
+     */
+    public function getHandler()
+    {
+        return $this->handler;
+    }
+
+    /**
+     * @param callable $handler
+     */
+    public function setHandler($handler)
+    {
+        $this->handler = $handler;
+    }
+
+    public function needSelectInDatabase() : bool
+    {
+        return is_null($this->handler);
     }
 }

@@ -110,9 +110,8 @@ class SmartNodeRelationFactory
 
                 continue;
             }
-
             $select = (object) [
-                'name' => $select,
+                'name' => $select
             ];
             $node->addSelect((new SmartNodeFactory())->make($select, $type));
         }

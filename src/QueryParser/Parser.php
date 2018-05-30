@@ -56,7 +56,7 @@ class Parser
         $parsedNodes = new ParsedNodes();
         $parsedNodes->nodes($nodes);
         $parsedNodes->model($this->type->model());
-        dd($parsedNodes->getRelationsForModel());
+//        dd($parsedNodes->getRelationsForModel());
         return $parsedNodes;
     }
 

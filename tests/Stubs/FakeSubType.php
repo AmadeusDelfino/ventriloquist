@@ -16,6 +16,9 @@ class FakeSubType extends Type
         return [
             'just_column_sub' => [
                 'structure' => StringStructure::class,
+                'handler' => function($rootType, $rootModel, $selects) {
+
+                }
             ],
             'relation_test_sub' => [
                 'type' => FakeSubSubType::class,

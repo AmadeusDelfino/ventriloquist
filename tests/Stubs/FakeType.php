@@ -21,6 +21,12 @@ class FakeType extends Type
             'relation_test_one' => [
                 'type' => FakeSubType::class,
             ],
+            'with_handler' => [
+                'structure' => StringStructure::class,
+                'handler' => function($rootType, $rootModel, $selects) {
+
+                }
+            ],
         ];
     }
 }

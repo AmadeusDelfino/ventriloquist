@@ -26,7 +26,7 @@ class SmartNodeColumnFactory
 
         $node->name($rawNode->name);
         $node->structure($this->getStructureClass($rawNode->name, $type));
-
+        $node->setHandler($this->getHandlerOfField($rawNode->name, $type));
         return $node;
     }
 
@@ -45,5 +45,10 @@ class SmartNodeColumnFactory
         if(is_null($type->getAttribute($rawNode->name))) {
             throw new AttributeNotFoundException();
         }
+    }
+
+    private function getHandlerOfField($name, Type $type)
+    {
+        return $type->getAttribute($name)['handler'] ?? null;
     }
 }

@@ -11,6 +11,11 @@ class Validator
         'unknown_error_nodes' => [],
     ];
 
+    public function getErrors()
+    {
+        return $this->errors;
+    }
+
     public function isValidRawNode($rawNode) : bool
     {
         return $this->hasNameAttribute($rawNode) && $this->hasValidSelectField($rawNode);
@@ -19,10 +24,10 @@ class Validator
     public function registerInvalidNode($rawNode)
     {
         if(! $this->hasNameAttribute($rawNode)) {
-            $this->registerUnknownNode($rawNode);
+            return $this->registerUnknownNode($rawNode);
         }
         if(! $this->hasValidSelectField($rawNode)) {
-            $this->registerInvalidStructureNode($rawNode);
+            return $this->registerInvalidStructureNode($rawNode);
         }
         $this->registerUnknownErrorNode($rawNode);
 

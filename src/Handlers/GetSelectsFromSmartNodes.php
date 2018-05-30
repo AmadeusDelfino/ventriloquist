@@ -19,7 +19,7 @@ class GetSelectsFromSmartNodes
             if ($node instanceof ColumnNode) {
                 $field = new  Field();
                 $field->setToken($node->name());
-
+                $field->setHandle($node->getHandler());
                 return $field;
             }
         }, $smartNodes);

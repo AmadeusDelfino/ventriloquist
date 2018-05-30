@@ -3,11 +3,30 @@
 namespace Adelf\Ventriloquist\QueryParser;
 
 
+use Adelf\Ventriloquist\Interfaces\Node;
+
 class Field
 {
     protected $token;
     protected $handle;
     protected $selects = [];
+    protected $value;
+
+    /**
+     * @return mixed
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * @param mixed $value
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+    }
 
 
     /**
@@ -69,6 +88,32 @@ class Field
 
     public function needSelectInDatabase() : bool
     {
-        return is_null($this->handle);
+        foreach($this->selects as $select) {
+            if($select->needSelectInDatabase()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function tokenWithSelect()
+    {
+        if(count(($selects = $this->makeSelectStringForModel())) == 0) {
+            return null;
+        }
+
+
+        return $this->token . ':' . implode(',', $selects);
+    }
+
+    private function makeSelectStringForModel()
+    {
+
+        return array_filter(array_map(function (Node $node) {
+            if($node->needSelectInDatabase()) {
+                return $node->name();
+            }
+        }, array_values($this->selects)));
     }
 }
