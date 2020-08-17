@@ -4,6 +4,7 @@ namespace Adelf\Ventriloquist\Handlers;
 
 use Adelf\Ventriloquist\Interfaces\Node;
 use Adelf\Ventriloquist\SmartQueryBase\RelationNode;
+use Illuminate\Support\Arr;
 
 class GetRelationsFromSmartNodes
 {
@@ -13,7 +14,7 @@ class GetRelationsFromSmartNodes
 
     public function __invoke($smartNodes)
     {
-        return array_flatten($this->getRelations($this->filterSelectNodes($smartNodes)));
+        return Arr::flatten($this->getRelations($this->filterSelectNodes($smartNodes)));
     }
 
     private function filterSelectNodes($smartNodes)
@@ -54,7 +55,7 @@ class GetRelationsFromSmartNodes
         $this->previouslyPrefix = $this->rootPrefix;
         $this->currentPrefix = null;
 
-        return (count($selects) == 0) ? null : array_flatten($selects);
+        return (count($selects) == 0) ? null : Arr::flatten($selects);
     }
 
     private function buildPrefix()

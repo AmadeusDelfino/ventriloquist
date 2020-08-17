@@ -6,6 +6,7 @@ use Adelf\Ventriloquist\Constants;
 use Adelf\Ventriloquist\Exceptions\NodeTypeNotValidException;
 use Adelf\Ventriloquist\SmartQueryBase\ColumnNode;
 use Adelf\Ventriloquist\SmartQueryBase\RelationNode;
+use Illuminate\Support\Arr;
 
 class SmartNodeFactory
 {
@@ -88,7 +89,7 @@ class SmartNodeFactory
         $nested = [];
         foreach ($selects as $key=>$select) {
             if (self::isNested($select)) {
-                $nested[] = array_pull($selects, $key);
+                Arr::pull($selects, $key);
             }
         }
 
