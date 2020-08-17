@@ -111,8 +111,8 @@ class GeneratorClassTest extends TestCase
         $parser->rootModel(new FakeModel());
         $parsedNodes = $parser->parse();
 
-        $this->assertInternalType('array', $parsedNodes->getRelations());
-        $this->assertInternalType('array', $parsedNodes->getSelects());
+        $this->assertIsArray($parsedNodes->getRelations());
+        $this->assertIsArray($parsedNodes->getSelects());
 
         //TODO test with eloquent
 //        $this->assertInstanceOf(Builder::class, $parsedNodes->eloquentBuilder());
@@ -128,7 +128,7 @@ class GeneratorClassTest extends TestCase
         $parser->rootModel(new FakeModel());
 
         $this->assertInstanceOf(Model::class, $parser->rootModel());
-        $this->assertInternalType('array', $parser->query());
+        $this->assertIsArray($parser->query());
     }
 
     /**
